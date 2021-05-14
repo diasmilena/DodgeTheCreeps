@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/y2mate.com - Eric Skiff  A Night Of Dizzy Spells  NO COPYRIGHT 8bit Music  Background.mp3-110d564fb9ac692a0d016e6acfd1f96c.mp3str"
+
+[deps]
+
+source_file="res://dodge_assets/art/y2mate.com - Eric Skiff  A Night Of Dizzy Spells  NO COPYRIGHT 8bit Music  Background.mp3"
+dest_files=[ "res://.import/y2mate.com - Eric Skiff  A Night Of Dizzy Spells  NO COPYRIGHT 8bit Music  Background.mp3-110d564fb9ac692a0d016e6acfd1f96c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

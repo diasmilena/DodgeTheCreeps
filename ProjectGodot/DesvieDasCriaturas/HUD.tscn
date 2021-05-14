@@ -1,0 +1,248 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://dodge_assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://HUD.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "ScoreAnimationAparecer"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -79.1959, 1.41422 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "ScoreAnimationDesaparecer"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1.41421, 1 ),
+"update": 0,
+"values": [ 1, -82.0244 ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+outline_size = 2
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 37.344, 118.423 ), Vector2( 37.344, 250 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "labelVir"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -416.618, 231.615 ), Vector2( 38.7582, 228.787 ) ]
+}
+
+[sub_resource type="DynamicFont" id=7]
+size = 64
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=8]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="Animation" id=10]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -182, 144.652 ]
+}
+
+[sub_resource type="DynamicFont" id=11]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "recordAnimation"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.862745, 0.815686, 0.101961, 1 ), Color( 0.862745, 0.815686, 0.101961, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=13]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "recordAnimation"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.862745, 0.815686, 0.101961, 1 ), Color( 0.862745, 0.815686, 0.101961, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 15.894
+margin_top = -76.0244
+margin_right = 60.894
+margin_bottom = 86.8284
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="animacao" type="AnimationPlayer" parent="ScoreLabel"]
+anims/ScoreAnimationAparecer = SubResource( 2 )
+anims/ScoreAnimationDesaparecer = SubResource( 3 )
+
+[node name="MessageLabel" type="Label" parent="."]
+anchor_right = 0.094
+anchor_bottom = 0.019
+margin_left = -414.222
+margin_top = 218.888
+margin_right = -43.342
+margin_bottom = 364.208
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0.129412, 0.121569, 0.121569, 1 )
+text = "Dodge the Creeps!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="animacao" type="AnimationPlayer" parent="MessageLabel"]
+autoplay = "labelEfeito"
+anims/labelEfeito = SubResource( 5 )
+anims/labelVir = SubResource( 6 )
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 144.652
+margin_top = 445.71
+margin_right = 324.652
+margin_bottom = 545.71
+rect_scale = Vector2( 1, 0.959999 )
+custom_fonts/font = SubResource( 7 )
+shortcut = SubResource( 9 )
+text = "Start"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="animacao" type="AnimationPlayer" parent="StartButton"]
+autoplay = "AnimationStart"
+anims/AnimationStart = SubResource( 10 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 317.652
+margin_top = 0.585999
+margin_right = 426.652
+margin_bottom = 37.586
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "record:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="animacao" type="AnimationPlayer" parent="Label"]
+anims/recordAnimation = SubResource( 12 )
+
+[node name="RecordScoreLabel2" type="Label" parent="."]
+margin_left = 411.652
+margin_top = 2.586
+margin_right = 496.652
+margin_bottom = 39.586
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="animacao2" type="AnimationPlayer" parent="RecordScoreLabel2"]
+anims/recordAnimation = SubResource( 14 )
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

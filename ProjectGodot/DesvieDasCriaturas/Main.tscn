@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://dodge_assets/art/y2mate.com - Eric Skiff  A Night Of Dizzy Spells  NO COPYRIGHT 8bit Music  Background.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Main.gd" type="Script" id=4]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://dodge_assets/art/pexels-sheena-wood-574115.jpg" type="Texture" id=6]
+[ext_resource path="res://dodge_assets/art/gameover.wav" type="AudioStream" id=7]
+[ext_resource path="res://dodge_assets/art/up-arrow.png" type="Texture" id=8]
+[ext_resource path="res://dodge_assets/art/down-arrow.png" type="Texture" id=9]
+[ext_resource path="res://dodge_assets/art/right-arrow.png" type="Texture" id=10]
+[ext_resource path="res://dodge_assets/art/left-arrow.png" type="Texture" id=11]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="GDScript" id=2]
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -2.31866, 0.474884, 0, 0, 0, 0, 474.271, -0.939331, 0, 0, 0, 0, 478.514, 715.629, 0, 0, 0, 0, -6.56128, 713.138, 0, 0, 0, 0, -3.73285, -3.86793, 0, 0, 0, 0, -2.31866, 0.474884, 0, 0, 0, 0, -6.56128, -5.28214 )
+}
+
+[node name="Main" type="Node"]
+script = ExtResource( 4 )
+Mob = ExtResource( 2 )
+
+[node name="Plano de fundo" type="TextureRect" parent="."]
+material = SubResource( 1 )
+anchor_left = -0.111
+anchor_top = -0.106
+anchor_right = -0.075
+anchor_bottom = -0.04
+margin_left = 49.28
+margin_top = 59.32
+margin_right = 525.0
+margin_bottom = 754.8
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+script = SubResource( 2 )
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 228.686, 448.586 )
+
+[node name="CaminhoTurba" type="Path2D" parent="."]
+position = Vector2( 8.48523, -2.82843 )
+curve = SubResource( 3 )
+
+[node name="LocalGeraçãoTurba" type="PathFollow2D" parent="CaminhoTurba"]
+position = Vector2( -2.31866, 0.474884 )
+rotation = -0.00296736
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[node name="musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="gameover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="up" type="TouchScreenButton" parent="."]
+position = Vector2( 322.027, 574.229 )
+scale = Vector2( 0.1, 0.1 )
+normal = ExtResource( 8 )
+action = "ui_up"
+
+[node name="down" type="TouchScreenButton" parent="."]
+position = Vector2( 322.027, 649.452 )
+scale = Vector2( 0.1, 0.1 )
+normal = ExtResource( 9 )
+action = "ui_down"
+
+[node name="right" type="TouchScreenButton" parent="."]
+position = Vector2( 174.515, 618.357 )
+scale = Vector2( 0.1, 0.1 )
+normal = ExtResource( 10 )
+action = "ui_right"
+
+[node name="left" type="TouchScreenButton" parent="."]
+position = Vector2( 75.9848, 618.357 )
+scale = Vector2( 0.1, 0.1 )
+normal = ExtResource( 11 )
+action = "ui_left"
+
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
