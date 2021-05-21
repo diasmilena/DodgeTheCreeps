@@ -1,6 +1,6 @@
 # DodgeTheCreeps
 
-* Projeto feito seguindo o [tutorial oficial da página do Godot engine](https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_game.html)
+* Projeto feito seguindo o [tutorial oficial da página do Godot engine.](https://docs.godotengine.org/en/stable/getting_started/step_by_step/your_first_game.html)
 * Adaptado para mobile.
 * Adicionado melhoras.
 * Desenvolvido em GDScript e Visual Scripting.
